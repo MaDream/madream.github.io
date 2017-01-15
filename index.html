@@ -144,7 +144,12 @@
     function storageEventHandler(event)
     {
         if (event.key == 'lastAction')
+        {
             parseLastAction();
+            let emptyAction = { mode: 'none' };
+            setLastAction(JSON.stringify(emptyAction));
+        }
+            
     };
 
 </script>
