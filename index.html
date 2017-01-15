@@ -119,10 +119,11 @@
             let items = list.getElementsByTagName('span');
             for (let i = 0; i < items.length; ++i)
             {
-                if (items[i].innerText.search(value) == -1)
+                if (items[i].innerText.toLowerCase().search(value.toLowerCase()) == -1)
                     listOfLi[i].style = 'display: none;';
                 else
                     listOfLi[i].style = 'margin-top: 5px;';
+            toLowerCase
             }
         }
     };
