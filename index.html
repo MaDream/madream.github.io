@@ -114,6 +114,7 @@
         }
         else
         {
+            document.getElementById('searchString').value = value;
             let listOfLi = document.getElementsByTagName('li');
             let items = list.getElementsByTagName('span');
             for (let i = 0; i < items.length; ++i)
