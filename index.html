@@ -24,6 +24,7 @@
                 mode: 'add',
                 text: document.getElementById('TODOinput').value
             };
+            document.getElementById('TODOinput').value = '';
             let actionJSON = JSON.stringify(action);
             setLastAction(actionJSON);
             newElement(action.text);
@@ -38,7 +39,6 @@
     let parseLastAction = function()
     {
         let action = JSON.parse(localStorage.getItem('lastAction'));
-        console.log(action);
         if (action.mode == 'add')
             newElement(action.text);
         else if (action.mode == 'remove')
@@ -143,7 +143,6 @@
     window.addEventListener('storage', storageEventHandler, false);
     function storageEventHandler(event)
     {
-        console.log('smth');
         if (event.key == 'lastAction')
             parseLastAction();
     };
