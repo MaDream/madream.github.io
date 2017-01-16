@@ -16,7 +16,8 @@
         };
 
         let lis = localStorage.getItem('TODOlist');
-        document.getElementById('list').innerHTML = lis;
+        if (lis !== null && lis != '')
+            document.getElementById('list').innerHTML = lis;
     };
 
     document.addEventListener("DOMContentLoaded", ready);
