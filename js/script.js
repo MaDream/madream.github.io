@@ -83,7 +83,6 @@
                     obj += ', ';
             }
             obj += ' ]';
-            console.log(obj);
             localStorage.setItem('TODOlist', obj);
         }
     }
