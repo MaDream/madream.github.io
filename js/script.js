@@ -28,9 +28,10 @@
             doSearch(action.text);
         };
 
-        let lis = localStorage.getItem('TODOlist');
-        if (lis !== null && lis != '')
-            document.getElementById('list').innerHTML = lis;
+        let lis = JSON.parse(localStorage.getItem('TODOlist'));
+        for (let i = 0; i < lis.length; ++i)
+            newElement(lis[i].content);
+        localStorage.clear();
     };
 
     document.addEventListener("DOMContentLoaded", ready);
@@ -73,8 +74,17 @@
             myBody.appendChild(someLi);
     
             list = document.getElementById('list');
-            let lis = list.getElementsByTagName('li');
-            localStorage.setItem('TODOlist', lis.innerHtml);
+            let spans = list.getElementsByTagName('span');
+            let obj = '[ ';
+            for (let i = 0; i < spans.length; ++i)
+            {
+                obj = obj + '{ \"content\" : "' + spans[i].innerText + '\" }';
+                if (i != spans.length - 1)
+                    obj += ', ';
+            }
+            obj += ' ]';
+            console.log(obj);
+            localStorage.setItem('TODOlist', obj);
         }
     }
 
