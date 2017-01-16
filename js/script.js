@@ -2,7 +2,6 @@
 
     function ready() 
     {
-        localStorage.clear();
         document.getElementById('btnNew').onclick = function()
         {
             let action = {
@@ -13,6 +12,20 @@
             let actionJSON = JSON.stringify(action);
             setLastAction(actionJSON);
             newElement(action.text);
+        };
+
+        let searchInput = document.getElementById('searchString');
+
+        searchInput.oninput = function()
+        {
+            let action = 
+            {
+                mode: 'search',
+                text: searchInput.value
+            }
+            let actionJSON = JSON.stringify(action);
+            setLastAction(actionJSON);
+            doSearch(action.text);
         };
 
         let lis = localStorage.getItem('TODOlist');
@@ -99,20 +112,6 @@
                     listOfLi[i].style = 'margin-top: 5px;';
             }
         }
-    };
-
-    let searchInput = document.getElementById('searchString');
-
-    searchInput.oninput = function()
-    {
-        let action = 
-        {
-            mode: 'search',
-            text: searchInput.value
-        }
-        let actionJSON = JSON.stringify(action);
-        setLastAction(actionJSON);
-        doSearch(action.text);
     };
     
     let parseLastAction = function()
